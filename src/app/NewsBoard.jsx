@@ -39,7 +39,7 @@ const NewsBoard = ({}) => {
   <h2 className='p-3'>Top <span className='badge bg-danger mt-6 mb-4 '>Headlines</span> </h2>
 
 <div className=''>
-<div className=" row">{currentCards.map((item, i) => <div className='col-12 col-md-6 col-lg-3 '><NewsCards key = {i} title={item.title}  description={item.description} url={item.url} imagesrc={item.urlToImage} /></div>)}</div>
+<div className=" row">{currentCards.map((item, i) => <div key = {i}  className='col-12 col-md-6 col-lg-3 '><NewsCards title={item.title}  description={item.description} url={item.url} imagesrc={item.image? item.image: "https://th.bing.com/th/id/OIP.lAV0PV1HXp3UPwY7RLBHcgHaFj?rs=1&pid=ImgDetMain"} /></div>)}</div>
 </div>
 
 

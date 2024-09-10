@@ -7,8 +7,8 @@ const NewsCards = ({title, description, imagesrc, url}) => {
   <img src= {imagesrc ? imagesrc : "https://th.bing.com/th/id/OIP.lAV0PV1HXp3UPwY7RLBHcgHaFj?rs=1&pid=ImgDetMain" } className="card-img-top" alt="..."  style={{width: "100%", height: "200px"}} />
   <div className="card-body" maxwidth= "340px" height = "300px" >
 
-    <h5 className="card-title" style={{height: "60px"}} > {description? title.slice(0, 45): title}</h5>
-    <div  className="card-text" style={{height: "150px"}}>{ description ?  description.slice(0,150): ""} </div>
+    <h5 className="card-title" style={{height: "60px"}} > {description? title.slice(0, 38): title}</h5>
+    <div  className="card-text" style={{height: "150px"}}>{ description ?  description.slice(0,120): ""} </div>
     <a href= {url} className="btn btn-primary"> Read More</a>
   </div>
 </div>
