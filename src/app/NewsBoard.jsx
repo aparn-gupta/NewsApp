@@ -1,26 +1,67 @@
-import React, {useContext} from 'react'
+"use client"
+
+import React, {useState, useContext} from 'react'
 import NewsCards from "./NewsCards";
+import { newsContext } from './Main';
 
 
 
 
-const NewsBoard = ({newsArticles}) => {
+const NewsBoard = ({}) => {
+
+  const {newsArticles, setNewsArticles, newsCategory, setNewsCategory, lang, setLang, country, setCountry, fromDate, setFromDate, toDate, setToDate, searchKeyword, setSearchKeyword} = useContext(newsContext)
+
+
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const cardsPerPage = 8; 
+
+ 
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = newsArticles.slice(indexOfFirstCard, indexOfLastCard);
+
+
+  const totalPages = Math.ceil(newsArticles.length / cardsPerPage);
+
+ 
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     
   
 
 
   return (
-    <div>
+   
 
   
-<div className="">
-<div className="">
-<div className="flex">{newsArticles.map(item => <NewsCards  title={item.title}  description={item.description} url={item.url} imagesrc={item.urlToImage} />)}</div>
+<div className=" container">
+  <h2 className='p-3'>Top <span className='badge bg-danger mt-6 mb-4 '>Headlines</span> </h2>
+
+<div className=''>
+<div className=" row">{currentCards.map((item, i) => <div className='col-12 col-md-6 col-lg-3 '><NewsCards key = {i} title={item.title}  description={item.description} url={item.url} imagesrc={item.urlToImage} /></div>)}</div>
 </div>
+
+
+<nav>
+        <ul className="pagination justify-content-center my-5">
+          {[...Array(totalPages)].map((_, index) => (
+            <li
+              className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}
+              key={index}
+            >
+              <button onClick={() => paginate(index + 1)} className="page-link">
+                {index + 1}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
 </div>
+
       
-    </div>
+ 
   )
 }
 

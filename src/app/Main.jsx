@@ -53,11 +53,11 @@ let contextValues = {newsArticles, setNewsArticles, newsCategory, setNewsCategor
   return (
   
 
-  <newsContext.Provider value = {{contextValues}}>
+  <newsContext.Provider value = {contextValues}>
       <div>
       <Navbar />
       <MenuBar />
-      <NewsBoard newsArticles={newsArticles}/>
+      <NewsBoard />
     </div>
   </newsContext.Provider>
 
